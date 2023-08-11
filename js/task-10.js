@@ -1,39 +1,48 @@
 const managementTools = document.querySelector('#controls');
 const inputNumberCreation = managementTools.querySelector('input[type="number"]');
+const min = parseInt(inputNumberCreation.getAttribute('min'));
+const max = parseInt(inputNumberCreation.getAttribute('max'));
+const step = parseInt(inputNumberCreation.getAttribute('step'));
 const buttonCreate =managementTools.querySelector('[data-create]');
 const buttonDestroy = managementTools.querySelector('[data-destroy]');
 
 const boxesDiv = document.querySelector('#boxes');
-console.log(boxesDiv);
-
 ////////////////////////////// ?
-buttonCreate.addEventListener('click', createBox);
+buttonCreate.addEventListener('click', numberLaunch);
 
-
-function createBox() {
-  boxesDiv.reset
-  
- const num = inputNumberCreation.value;
-  if (num > 0) {
+function createBoxes(amount) {
+  // boxesDiv.reset
+//  const num = inputNumberCreation.value;
+  if (amount > 0 && amount <=max) {
     const accDiv = [];
-    for (let i = 0; i < num; i += 1) {
-      const newDiv = document.createElement('div')
-      newDiv.style.width = (30+i*10) + "px";
-      newDiv.style.height =  (30+i*10)+ "px";
-      newDiv.style.backgroundColor = getRandomHexColor();
-      accDiv.push(newDiv)
-    }
-    boxesDiv.append(...accDiv);
-  }
+    let paramWH = 30;
+    for (let i = 0; i < amount; i += 1) {
+      // const newDiv = document.createElement('div')
+      // newDiv.style.width = (30+i*10) + "px";
+      // newDiv.style.height =  (30+i*10)+ "px";
+      // newDiv.style.backgroundColor = getRandomHexColor();
+       paramWH += 10;
+      const newDiv = `<div style="width:${paramWH}px ; height:${paramWH}px ; background-color:${getRandomHexColor()} ;"></div>`;
+      accDiv.push(newDiv);
+    };
+    // const markup =;
+    
+    boxesDiv.insertAdjacentHTML("beforeend", accDiv.join(''));
+  } else { alert(`Enter any positive number less than ${max} and not less than 0) `)}
+  
+}
+
+
+function numberLaunch() {
+  const num = parseInt(inputNumberCreation.value);
+  createBoxes(num);
 }
 //////////////////////////////// ?
-
 buttonDestroy.addEventListener('click', destroyBoxes);
 
 function destroyBoxes() {
   boxesDiv.innerHTML = '';
 }
-
 //////////////////////////////// ?
 function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215)
