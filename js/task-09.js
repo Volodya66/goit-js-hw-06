@@ -1,5 +1,6 @@
 
 const textColorValue = document.querySelector('.color');
+const bodyEl = document.body;
 const buttonCC = document.querySelector('.change-color')
 
 
@@ -11,7 +12,7 @@ function getRandomHexColor() {
 
 
 const colorChange = () => {
-  buttonCC.style.backgroundColor = getRandomHexColor();
+  bodyEl.style.backgroundColor = getRandomHexColor();
   textColorValue.textContent = getRandomHexColor();
  };
 

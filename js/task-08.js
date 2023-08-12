@@ -7,11 +7,8 @@ function noSub(event) {
     event.preventDefault();
     const { email, password } = event.currentTarget.elements;
 
-    if (email.value === "") {
-        alert("Не усе ввели, заповніть поле для введення email")
-    };
-     if (password.value === "") {
-        alert("Не усе ввели, заповніть поле для введення password")
+     if (password.value === "" || email.value === "" ) {
+     return   alert("Не усе ввели, заповніть поле для введення ")
     };
     
     const data = {

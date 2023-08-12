@@ -11,22 +11,15 @@ const boxesDiv = document.querySelector('#boxes');
 buttonCreate.addEventListener('click', numberLaunch);
 
 function createBoxes(amount) {
-  // boxesDiv.reset
-//  const num = inputNumberCreation.value;
+ 
   if (amount > 0 && amount <=max) {
     const accDiv = [];
     let paramWH = 30;
     for (let i = 0; i < amount; i += 1) {
-      // const newDiv = document.createElement('div')
-      // newDiv.style.width = (30+i*10) + "px";
-      // newDiv.style.height =  (30+i*10)+ "px";
-      // newDiv.style.backgroundColor = getRandomHexColor();
-       paramWH += 10;
+      paramWH += 10;
       const newDiv = `<div style="width:${paramWH}px ; height:${paramWH}px ; background-color:${getRandomHexColor()} ;"></div>`;
       accDiv.push(newDiv);
     };
-    // const markup =;
-    
     boxesDiv.insertAdjacentHTML("beforeend", accDiv.join(''));
   } else { alert(`Enter any positive number less than ${max} and not less than 0) `)}
   
